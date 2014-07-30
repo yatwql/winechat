@@ -1,0 +1,6 @@
+    <div class="row">
+         <form action="/wechat/menu/update" enctype="multipart/form-data" method="post">
+          <input type="file" name="document"/>
+          <input type="submit" name="upload your menu file"/>
+        </form>
+    </div>

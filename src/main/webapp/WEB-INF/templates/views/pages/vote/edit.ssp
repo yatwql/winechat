@@ -1,0 +1,211 @@
+<%@ var voteName: String %>
+<%@ var voteId: String %>
+<%@ var description: String %>
+<%@ var voteMethod: Int %>
+<%@ var voteOptions:List[(Int,String,String)] %>
+<%@ var action: String %>
+ 
+            
+ 
+ <form method="post" action="/vote/save">
+ <input type="hidden" name="action" value="${action}"
+ <div class="row">
+    <div class="span6">
+    VOTE ID: <input type="text" name="voteId" value="${voteId}"/>
+    <input type="hidden" name="qVoteId" value="${voteId}"/>
+    </div>
+ </div> 
+ 
+ <div class="input-group">
+   调查题目:<input type="text" name="voteName" value="${voteName}"  class="form-control"/>
+ </div>  
+ 
+ 
+ <div class="row">
+    <div class="span6">
+    描述: <textarea name="description" rows="5" class="form-control" >${description}</textarea>
+    </div>
+ </div>  
+ 
+ 
+ <div class="row">
+    <div class="span6">
+    方法: ${voteMethod} <input type="hidden" name="voteMethod" value="${voteMethod}"/>
+    </div>
+ </div>  
+ 
+
+ 
+ </br>
+ <input type="hidden" name="sizeOfVoteOptions" value ="100" >
+ <table class="table table-striped" id="tab_logic">
+<thead>
+<tr>
+ <td>选项</td>
+ <td>描述</td>
+</tr>
+</thead>  
+
+<tbody>
+<% var seq:Int=0%>
+#for ((id:Int,option:String,optionDesc:String) <- voteOptions)
+<% seq=seq+1%>
+<tr id='voteOption${seq}' >
+    <td>
+    
+    <input type="hidden" name="optionId-${seq}" value="${id}" />
+       <input type="text" name="option-${seq}" value="${option}"  class="form-control"/> 
+    </td>
+    <td> 
+    <input type="text"  name="optionDesc-${seq}" class="form-control" value="${optionDesc}" />
+     </td>     
+</tr>
+#end
+
+</tbody>
+</table>
+ <a id="add_row" class="btn btn-default"> add </a>
+ <!--a id='delete_row' class="btn btn-default"/-->
+ <input type="submit" class="btn btn-warning" value="保存"/>
+ <a class="btn btn-danger" href="/vote/delete/${voteId}">删除</a>
+ <a class="btn btn-primary" href="/vote/list">回到列表</a>
+ 
+ 
+     
+ <script >
+ $(document).ready(function(){
+      var i=${voteOptions.size+1};
+     $("#add_row").click(function(){
+    
+
+      $('#tab_logic').append("<tr id='voteOption"+(i)+"'><td><input name='optionId-"+i+"' type='hidden'  />  <input name='option-"+i+"' type='text'  class='form-control'  placeholder='option' /> </td><td><input name='optionDesc-"+i+"' type='text'  class='form-control'  placeholder='optionDesc' /></td></tr>");
+      i++; 
+  });
+     $("#delete_row").click(function(){
+    	 if(i>1){
+		 $("#voteOption"+(i)).html('');
+		 i--;
+		 }
+	 });
+
+});
+ </script>
+  </form>
+  
+  
+   <script type="text/javascript">
+        $(document).ready(function() {
+            $('#btnAdd').click(function() {
+            alert("DEBUG 99")
+                var num     = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+                 alert("DEBUG 101 "+num)
+                var newNum  = new Number(num + 1);      // the numeric ID of the new input field being added
+  alert("DEBUG 103")
+                // create the new element via clone(), and manipulate it's ID using newNum value
+                var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
+  alert("DEBUG 106")
+                // manipulate the name/id values of the input inside the new element
+               //  newElem.children(':first').attr('id', 'name' + newNum).attr('name', 'name' + newNum);
+               alert("DEBUG 109")  
+                newElem.children(':first').attr('id', 'user['+ newNum + ']name' ).attr('name', 'user['+ newNum + ']name' );
+                 alert("DEBUG 111")
+                newElem.children(':next').attr('id', 'user['+ newNum + ']age' ).attr('name', 'user['+ newNum + ']age' );
+                  alert("DEBUG 113")
+                newElem.children(':last').attr('id', 'user['+ newNum + ']gender' ).attr('name', 'user['+ newNum + ']gender' );
+                 alert("DEBUG 114")
+                  
+                // insert the new element after the last "duplicatable" input field
+                $('#input' + num).after(newElem);
+  alert("DEBUG 118")
+                // enable the "remove" button
+                $('#btnDel').attr('disabled','');
+   alert("DEBUG 120 "+newNum)
+                // business rule: you can only add 5 names
+                if (newNum == 5)
+                    $('#btnAdd').attr('disabled','disabled');
+            });
+  
+            $('#btnDel').click(function() {
+                var num = $('.clonedInput').length; // how many "duplicatable" input fields we currently have
+                $('#input' + num).remove();     // remove the last element
+  
+                // enable the "add" button
+                $('#btnAdd').attr('disabled','');
+  
+                // if only one element remains, disable the "remove" button
+                if (num-1 == 1)
+                    $('#btnDel').attr('disabled','disabled');
+            });
+  
+            $('#btnDel').attr('disabled','disabled');
+        });
+    </script>
+    
+    <form id="myForm">
+    <div id="input1" style="margin-bottom:4px;" class="clonedInput">
+       Name: <input type="text" name="user[1]name" id="user[1]name" />
+       age: <input type="text" name="user[1]age" id="user[1]age" />
+       gender: <input type="text" name="user[1]gender" id="user[1]gender" />
+    </div>
+    </div>
+  
+    <div>
+        <input type="button" id="btnAdd" value="add another name" />
+        <input type="button" id="btnDel" value="remove name" />
+        <input type="submit">
+    </div>
+</form>
+
+
+<script>
+    $(document).ready(function(){
+         //<tr/>居中
+        $("#tab tr").attr("align","center");        
+        //增加<tr/>
+        $("#but").click(function(){
+            var _len = $("#tab tr").length;        
+            $("#tab").append("<tr id="+_len+" align='center'>"
+                                +"<td>"+_len+"</td>"
+                                +"<td>Dynamic TR"+_len+"</td>"
+                                +"<td><input type='text' name='desc"+_len+"' id='desc"+_len+"' /></td>"
+                                +"<td><a href=\'#\' onclick=\'deltr("+_len+")\'>删除</a></td>"
+                            +"</tr>");            
+        })    
+    })
+    
+    //删除<tr/>
+    var deltr =function(index)
+    {
+        var _len = $("#tab tr").length;
+        $("tr[id='"+index+"']").remove();//删除当前行
+        for(var i=index+1,j=_len;i<j;i++)
+        {
+            var nextTxtVal = $("#desc"+i).val();
+            $("tr[id=\'"+i+"\']")
+                .replaceWith("<tr id="+(i-1)+" align='center'>"
+                                +"<td>"+(i-1)+"</td>"
+                                +"<td>Dynamic TR"+(i-1)+"</td>"
+                                +"<td><input type='text' name='desc"+(i-1)+"' value='"+nextTxtVal+"' id='desc"+(i-1)+"'/></td>"
+                                +"<td><a href=\'#\' onclick=\'deltr("+(i-1)+")\'>删除</a></td>"
+                            +"</tr>");
+        }    
+        
+    }
+</script>
+
+<table id="tab" border="1" width="60%" align="center" style="margin-top:20px">
+        <tr>
+            <td width="20%">序号</td>
+            <td>标题</td>
+            <td>描述</td>
+            <td>操作</td>
+       </tr>
+    </table>
+    <div style="border:2px; 
+                border-color:#00CC00; 
+                margin-left:20%;
+                margin-top:20px">
+        <input type="button" id="but" value="增加"/>
+    </div>
+</body>
+  

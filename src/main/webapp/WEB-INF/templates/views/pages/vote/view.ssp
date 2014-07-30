@@ -1,0 +1,55 @@
+<%@ var voteName: String %>
+<%@ var voteId: String %>
+<%@ var description: String %>
+<%@ var voteMethod: Int %>
+<%@ var message: String ="" %>
+<%@ var voteOptions:List[(Int,String,String)] %>
+  <div class="row">
+    <div class="span6 alert">
+   ${message}
+    </div>
+ </div>  
+ 
+ <div class="row">
+    <div class="span6">
+   <h2> 调查题目: ${voteName}</h2>
+    </div>
+ </div>  
+ 
+ 
+ <div class="row">
+    <div class="span6">
+    <b>描述:</b> ${description}
+    </div>
+ </div>  
+ 
+ 
+ <div class="row">
+    <div class="span6">
+    <b>方法:</b> ${voteMethod}
+    </div>
+ </div>  
+ 
+ 
+ <div class="row">
+    <div class="span6">
+    <b>ID:</b> ${voteId} (关键字 vote${voteId})
+    </div>
+ </div> 
+ 
+ </br>
+ <table class="table table-striped">
+<thead><tr><td>选项</td><td>描述</td></tr></thead>  
+
+<tbody>
+#for ((id:Int,option:String,optionDesc:String) <- voteOptions)
+<tr>
+    <td>${option}</td><td> ${optionDesc} </td>     
+</tr>
+#end
+
+</tbody>
+</table>
+ <a  class="btn btn-warning" href="/vote/edit/${voteId}">编辑调查内容</a>
+ <a  class="btn btn-info" href="/vote/result/${voteId}">查看调查结果</a>
+ <a  class="btn btn-primary" href="/vote/list">回到列表</a>

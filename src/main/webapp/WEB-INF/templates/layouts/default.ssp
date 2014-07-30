@@ -1,0 +1,91 @@
+<%@ val body:String %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wechat7 App Site</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      body {
+        padding-top: 150px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>    
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/#">Wechat7 App Site</a>
+        </div>
+      </div>
+      
+       <div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">微信菜单<span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a href="/wechat/menu/upload">上传微信菜单文件(并建立菜单)</a></li>
+        <li><a href="/wechat/menu/create">重建微信菜单</a></li>
+         <li><a href="/wechat/menu/get">获取微信菜单信息</a></li>
+        <li class="divider"></li>
+        <li><a href="/wechat/menu/delete">删除微信菜单</a></li>
+    </ul>
+     </div>
+  
+   <div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">文章 <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a href="/article/list">过往文章</a></li>
+        <li><a href="/article//new">发表文章</a></li>
+       <li><a href="/article/manage">管理文章</a></li>
+    </ul>
+     </div>
+    
+     <div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">调查结果 <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li><a href="/vote/list">管理调查列表</a></li>
+        <li><a href="/vote/new">新调查</a></li>
+    </ul> 
+   </div>
+   
+   
+ 
+     <div class="btn-group">
+    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">管理 <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+         <li><a href="/user/list">管理用户</a></li>
+        <li><a href="/user/create">新用户</a></li>
+        <li><a href="/audit/list">Audit Logs</a></li>
+        <li><a href="/user/manage/current">当前用户管理</a></li>
+        <li class="divider"></li>
+        <li><a href="/tables/drop/all">删除所有数据库表</a></li>
+        <li><a href="/tables/create/all">建立所有数据库表</a></li>
+         <li><a href="/tables/populate/all">重新加载数据到数据库表中</a></li>
+        
+        <li><a href="/tables/flush/all">重建数据库并加载数据</a></li>
+    </ul>
+   </div>
+   <img src="/img/WeChatAcct0.jpeg" height="80px" width="80px"/>
+   
+  
+    </div>
+     <script src="/js/jquery-1.9.0.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-atmosphere.js"></script>
+    <script src="/js/application.js"></script>
+    <div class="container">
+
+      <%= unescape(body) %>
+ 
+    </div> <!-- /container -->
+   
+    
+  </body>
+</html>

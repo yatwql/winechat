@@ -1,0 +1,13 @@
+<%@ import val message: String %>
+<%@ import val title: String %>
+
+<div class="row">
+    <div class="span6">
+        <h2><%= title %> </h2>
+        <p class="lead"><%= message %></p>     
+    </div>
+
+</div>
+</div>
+
+    

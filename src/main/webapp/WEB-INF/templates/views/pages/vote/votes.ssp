@@ -1,0 +1,18 @@
+<%@ var list: List[(String,Int,String)] %>
+<%@ var message:String="" %>
+<h2>${message}</h2>
+<table class="table table-striped">
+<thead><tr><td>投票主题</td><td>微信关键字</td></tr></thead>  
+
+<tbody>
+#for ((name:String,id:Int,remark:String) <- list)
+<tr>
+    <td><a href="/vote/view/${id}">${name}</a></td>
+    <td> vote${id} </td>     
+</tr>
+#end
+
+</tbody>
+</table>
+
+ <a  class="btn btn-danger" href="/vote/new">新增调查</a>

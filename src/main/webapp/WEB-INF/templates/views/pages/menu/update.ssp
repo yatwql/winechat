@@ -1,0 +1,10 @@
+<%@ import val item: org.scalatra.servlet.FileItem %>
+<%@ import val menu: String %>
+    <div class="row">
+    <h2>Upload menu file successful </h2>
+         <p>File Name: <%=item.name %></p>
+        <p>content type: <%= item.contentType.getOrElse("unknown") %></p>
+        <p>File Size: <%= item.size %></p>
+        <p>Saved content: <%= menu%></p>
+        <p><a href="/wechat/menu/create" >Create the menu</a></p>
+    </div>

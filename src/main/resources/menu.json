@@ -1,0 +1,66 @@
+{
+    "button": [
+        {
+            "name": "推荐阅读...", 
+            "sub_button": [
+                {
+                    "key": "11", 
+                    "name": "红酒鉴赏小知识", 
+                    "type": "click"
+                }, 
+                {
+                    "key": "12", 
+                    "name": "南美农产品", 
+                    "type": "click"
+                },
+                 {
+                    "key": "history", 
+                    "name": "更多文章", 
+                    "type": "click"
+                }
+            ]
+        }, 
+        {
+            "name": "小调查", 
+            "sub_button": [
+                {
+                    "key": "vote21", 
+                    "name": "喜欢哪的红酒?", 
+                    "type": "click"
+                }, 
+                {
+                    "key": "vote22", 
+                    "name": "喜欢什么口味的?", 
+                    "type": "click"
+                },
+                {
+                    "key": "vote23", 
+                    "name": "接受的价位是?", 
+                    "type": "click"
+                }
+            ]
+        }, 
+        {
+            "name": "更多体验", 
+            "sub_button": [
+                {
+                    "key": "about", 
+                    "name": "关于我们", 
+                    "type": "click"
+                }, 
+                 {
+                    "key": "help", 
+                    "name": "帮助", 
+                    "type": "click"
+                }, 
+                  {
+                    "key": "contact", 
+                    "name": "联系我们", 
+                    "type": "click"
+                }
+              
+              
+            ]
+        }
+    ]
+}
