@@ -12,7 +12,7 @@
       body {
         padding-top: 150px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
-    </style>    
+    </style>
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,10 +23,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/#">Wechat7 App Site</a>
+          <a class="brand" href="/#">WineChat App Site</a>
         </div>
       </div>
-      
+
        <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">微信菜单<span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -37,7 +37,7 @@
         <li><a href="/wechat/menu/delete">删除微信菜单</a></li>
     </ul>
      </div>
-  
+
    <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">文章 <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -46,17 +46,17 @@
        <li><a href="/article/manage">管理文章</a></li>
     </ul>
      </div>
-    
+
      <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">调查结果 <span class="caret"></span></button>
     <ul class="dropdown-menu">
         <li><a href="/vote/list">管理调查列表</a></li>
         <li><a href="/vote/new">新调查</a></li>
-    </ul> 
+    </ul>
    </div>
-   
-   
- 
+
+
+
      <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">管理 <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -68,13 +68,13 @@
         <li><a href="/tables/drop/all">删除所有数据库表</a></li>
         <li><a href="/tables/create/all">建立所有数据库表</a></li>
          <li><a href="/tables/populate/all">重新加载数据到数据库表中</a></li>
-        
+
         <li><a href="/tables/flush/all">重建数据库并加载数据</a></li>
     </ul>
    </div>
    <img src="/img/WeChatAcct0.jpeg" height="80px" width="80px"/>
-   
-  
+
+
     </div>
      <script src="/js/jquery-1.9.0.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -83,9 +83,9 @@
     <div class="container">
 
       <%= unescape(body) %>
- 
+
     </div> <!-- /container -->
-   
-    
+
+
   </body>
 </html>
