@@ -1,9 +1,9 @@
 package wechat7.util
 
 object Constants {
-  val appId = "wx97c2cba93843a8e6"
-  val appSecret = "4f488c849ddf23c83ef97e5b8482b8a1"
-  val TOKEN = "WANGQL"
+  val appId = "wx76894c8bc8acf21a"
+  val appSecret = "bef5d6ae4f2b40fe5772e67c4ee4c218"
+  val TOKEN = "LISHEWINE"
 
   val REQ_MSG_TYP_TEXT = "text"
   val REQ_MSG_TYP_IMAGE = "image"
