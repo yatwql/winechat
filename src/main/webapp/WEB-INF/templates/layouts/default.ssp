@@ -38,14 +38,6 @@
     </ul>
      </div>
 
-   <div class="btn-group">
-    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">文章 <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-        <li><a href="/article/list">过往文章</a></li>
-        <li><a href="/article//new">发表文章</a></li>
-       <li><a href="/article/manage">管理文章</a></li>
-    </ul>
-     </div>
 
      <div class="btn-group">
     <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">调查结果 <span class="caret"></span></button>
