@@ -12,11 +12,6 @@
                     "key": "12", 
                     "name": "南美农产品", 
                     "type": "click"
-                },
-                 {
-                    "key": "history", 
-                    "name": "更多文章", 
-                    "type": "click"
                 }
             ]
         }, 
