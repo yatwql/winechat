@@ -70,7 +70,7 @@ trait VotePlugin extends VoteRepo with Plugin {
     }
     val responseContent = getVoteThreadFromCache(voteId) match {
       case Some((voteName, description, voteMethod, voteOptions)) => {
-        val desc1 = nickname + ", 欢迎参加  '" + voteName + "'. "
+        val desc1 = nickname + " 欢迎参加  '" + voteName + "'. "
         val desc2 = voteResultOption match {
           case Some(s) => " 您已经投票 (" + s + "). "
           case _ => ""
