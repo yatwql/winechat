@@ -45,8 +45,8 @@ trait ArticlePlugin extends ActionRepo with Plugin {
     val list = getArticleList(20)
     
     val responseContent = splitListIntoDesc(list) match {
-      case Some(desc) => nickname + ". 最近的 "+list.size+" 篇文章列表 -> " + desc 
-      case _ => nickname + ". 最近的没有文章呀 " 
+      case Some(desc) => nickname + " 最近的 "+list.size+" 篇文章列表 -> " + desc 
+      case _ => nickname + " 最近的没有文章呀 " 
     }
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }

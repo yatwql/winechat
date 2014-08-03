@@ -85,9 +85,19 @@ trait Plugin extends ActionRepo with UserRepo {
       case Some(t) => t
       case None => {
         println(" Get user info from wechat site")
-        addUser(WechatUtils.getUserInfo(openId))
+        WechatUtils.getUserInfo(openId) match {
+          case Some(json) =>addUser(json)
+          case _ => { 
+            println("Not able to load user information from wechat site")
+            ""
+          }
+        }
+        
       }
-      case _ => "not found"
+      case _ => {
+        println("Not able to load user information")
+        ""
+      }
     }
     Some(nickname)
   }
@@ -103,7 +113,7 @@ trait Plugin extends ActionRepo with UserRepo {
   }
 
   def dontknow(openId: String, appUserId: String, nickname: String, requestContent: String): Option[Node] = {
-    val responseContent = nickname + " ,没能理解您的意思 '" + requestContent + "', 输入 help 可获取帮助  "
+    val responseContent = nickname + " 没能理解您的意思 '" + requestContent + "', 输入 help 可获取帮助  "
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }
 

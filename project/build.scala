@@ -9,7 +9,7 @@ import com.earldouglas.xsbtwebplugin.WebPlugin._
 
 object DragonStudioWebchatAppBuild extends Build {
   val Organization = "com.dragonstudio"
-  val Name = "Dragon Studio WineChat App"
+  val Name = "WineChat App"
 
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.3"

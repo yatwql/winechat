@@ -30,8 +30,8 @@ trait VotePlugin extends VoteRepo with Plugin {
     val desc = splitListIntoDesc(list)
 
     val responseContent = splitListIntoDesc(list) match {
-      case Some(desc) =>  nickname + ". 您可参加以下 " + list.size + " 类调查 -> " + desc
-      case _ => nickname + ". 最近的没有调查呀 " 
+      case Some(desc) =>  nickname + " 您可参加以下 " + list.size + " 类调查 -> " + desc
+      case _ => nickname + " 最近的没有调查呀 " 
     }
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }
@@ -77,7 +77,7 @@ trait VotePlugin extends VoteRepo with Plugin {
         }
         desc1 + desc2 + description
       }
-      case _ => nickname + " ,您投了 '" + requestContent + "' 给了一个无效的调查  " + voteId
+      case _ => nickname + " 您投了 '" + requestContent + "' 给了一个无效的调查  " + voteId
     }
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }
@@ -89,13 +89,13 @@ trait VotePlugin extends VoteRepo with Plugin {
         {
           if (voteMethod == Constants.VOTE_METHOD_ALL || voteOptions.contains(requestContent.trim())) {
             updateVoteResult(openId, voteId, requestContent)
-            nickname + ", 您投了  '" + requestContent + "' 给 '" + voteName + "'"
+            nickname + " 您投了  '" + requestContent + "' 给 '" + voteName + "'"
           } else {
-            nickname + ", 您投了无效选项 '" + requestContent + "' 给 '" + voteName + "'"
+            nickname + " 您投了无效选项 '" + requestContent + "' 给 '" + voteName + "'"
           }
         }
 
-      case _ => nickname + " ,您投了 '" + requestContent + "' 给了一个无效的调查 " + voteId
+      case _ => nickname + "  您投了 '" + requestContent + "' 给了一个无效的调查 " + voteId
     }
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }

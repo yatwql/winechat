@@ -14,7 +14,7 @@ import org.json4s.jvalue2monadic
 import org.json4s._
 object WechatUtils {
   implicit val formats = DefaultFormats
-  
+
   def checkSignature(params: org.scalatra.Params): String =
     {
       val signature = params.getOrElse("signature", "")
@@ -77,8 +77,8 @@ object WechatUtils {
     val message = new String(data, "UTF-8");
     message
   }
-  
-  def createMenu(menu:String):String ={
+
+  def createMenu(menu: String): String = {
     try {
       val access_token = WechatUtils.getAccess_token
       //val access_token = "Testing"
@@ -107,8 +107,6 @@ object WechatUtils {
     }
   }
 
-  
-
   def getMenu(): String = {
     val menu_url = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token="
     val message = getPageByToken("Get menu", menu_url)
@@ -125,21 +123,27 @@ object WechatUtils {
     responseMsg
   }
 
-  def getUserInfo(openId: String): JValue = {
-    val url = "https://api.weixin.qq.com/cgi-bin/user/info?openid=" + openId + "&lang=zh_CN&access_token="
-    val message = getPageByToken("Get User Info for open user id " + openId, url)
-    val json = parse(message)
-    val nickname = (json \ "nickname").extract[String]
-    val sex = (json \ "sex").extract[String]
-    val language = (json \ "language").extract[String]
-    val city = (json \ "city").extract[String]
-    val province = (json \ "province").extract[String]
-    val country = (json \ "country").extract[String]
-    val headimgurl = (json \ "headimgurl").extract[String]
-    val subscribeTime = (json \ "subscribe_time").extract[String]
-    json
+  def getUserInfo(openId: String): Option[JValue] = {
+
+    Constants.USE_ADVANCED_VERSION match {
+      case true => {
+        val url = "https://api.weixin.qq.com/cgi-bin/user/info?openid=" + openId + "&lang=zh_CN&access_token="
+        val message = getPageByToken("Get User Info for open user id " + openId, url)
+        val json = parse(message)
+        val nickname = (json \ "nickname").extract[String]
+        val sex = (json \ "sex").extract[String]
+        val language = (json \ "language").extract[String]
+        val city = (json \ "city").extract[String]
+        val province = (json \ "province").extract[String]
+        val country = (json \ "country").extract[String]
+        val headimgurl = (json \ "headimgurl").extract[String]
+        val subscribeTime = (json \ "subscribe_time").extract[String]
+        Some(json)
+      }
+      case _ => None
+    }
+
   }
-  
 
   def getPageByToken(action: String, url: String): String = {
     try {

@@ -4,6 +4,7 @@ object Constants {
   val appId = "wx76894c8bc8acf21a"
   val appSecret = "bef5d6ae4f2b40fe5772e67c4ee4c218"
   val TOKEN = "LISHEWINE"
+  val USE_ADVANCED_VERSION = false
 
   val REQ_MSG_TYP_TEXT = "text"
   val REQ_MSG_TYP_IMAGE = "image"
