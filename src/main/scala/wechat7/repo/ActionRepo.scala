@@ -41,9 +41,10 @@ trait ActionRepo extends SlickRepo {
             println("======================Insert articles into database ====================")
             articles.insert(Article("红酒鉴赏小知识", "红酒鉴赏小知识,请增加微信公众号 '利设商贸' 或 个人微信号 18819805342 了解详情", "11", "news", Constants.REDWINE_PIC, ""))
             articles.insert(Article("南美农产品介绍", "南美农产品介绍,请增加微信公众号 '利设商贸' 或 个人微信号 18819805342 了解详情", "12", "news", Constants.REDWINE_PIC,""))
+            articles.insert(Article("红酒资讯", "红酒资讯,请增加微信公众号 '利设商贸' 或 个人微信号 18819805342 了解详情", "13", "news", Constants.REDWINE_PIC,""))
             articles.insert(Article("帮助", "打help出此页面,vote参加投票 ", "help", "text"))
             articles.insert(Article("帮助", "打help出此页面,vote参加投票 ", "帮助", "text"))
-            articles.insert(Article("关于我们", "利设商贸提供的葡萄酒咨询平台", "about", "text"))
+            articles.insert(Article("关于我们", "利设商贸提供的葡萄酒咨询平台,微信公众号 '利设商贸'", "about", "text"))
             articles.insert(Article("联系我们", "阮先生 电话/微信 18819805342", "contact", "text"))
             println("======================retrieve articles from database ====================")
             articles.list foreach println
