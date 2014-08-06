@@ -12,8 +12,8 @@ object DragonStudioWebchatAppBuild extends Build {
   val Name = "WineChat App"
 
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.2.2"
+  val ScalaVersion = "2.10.4"
+  val ScalatraVersion = "2.3.0"
 
   lazy val project = Project (
     "dragon-studio-winechat-app",
