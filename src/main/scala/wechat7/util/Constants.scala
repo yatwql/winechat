@@ -1,4 +1,6 @@
 package wechat7.util
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigFactory
 
 object Constants {
   val env = scala.util.Properties.envOrElse("runMode", "prod")
