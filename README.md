@@ -1,9 +1,9 @@
-# Dragon Studio Webchat7 App #
+# WineChat App #
 
 ## Build & Run ##
 
 ```sh
-$ cd wechat7
+$ cd winechat
 $ ./sbt
 > container:start
 > browse

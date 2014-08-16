@@ -50,7 +50,7 @@ object DragonStudioWebchatAppBuild extends Build {
         "io.spray" % "spray-caching" % "1.3.1",
         "io.spray" % "spray-util" % "1.3.1",
         "com.googlecode.concurrentlinkedhashmap" % "concurrentlinkedhashmap-lru" % "1.4",
-          "com.typesafe.akka" %% "akka-actor" % "2.2.3",
+          "com.typesafe.akka" %% "akka-actor" % "2.3.5",
         "junit" % "junit" % "4.8.1" % "test"
       ),
 
