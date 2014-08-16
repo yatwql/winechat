@@ -1,10 +1,12 @@
 package wechat7.util
 
 object Constants {
-  val appId = "wx76894c8bc8acf21a"
-  val appSecret = "bef5d6ae4f2b40fe5772e67c4ee4c218"
-  val TOKEN = "LISHEWINE"
-  val USE_ADVANCED_VERSION = false
+  val env = scala.util.Properties.envOrElse("runMode", "prod")
+  val config = ConfigFactory.load(env)
+  val appId = config.getString("wechat.appId")
+  val appSecret =  config.getString("wechat.appSecret")
+  val TOKEN =  config.getString("wechat.TOKEN")
+  val USE_ADVANCED_VERSION = config.getBoolean("wechat.USE_ADVANCED_VERSION")
 
   val REQ_MSG_TYP_TEXT = "text"
   val REQ_MSG_TYP_IMAGE = "image"
