@@ -34,7 +34,7 @@ trait WechatController extends WechatAppStack with AgentProxy  {
     val slug = params("slug")
 
     val requestXml = <xml>
-                       <ToUserName><![CDATA["+Constans.appUserId+"]]></ToUserName>
+                       <ToUserName><![CDATA[gh_b963016b584e]]></ToUserName>
                        <Content>{ slug }</Content>
                        <FromUserName><![CDATA[oIySzjrizSaAyqnlB57ggb0j2WNc]]></FromUserName>
                        <MsgType><![CDATA[text]]></MsgType>
@@ -47,7 +47,7 @@ trait WechatController extends WechatAppStack with AgentProxy  {
     val slug = params("slug")
 
     val requestXml = <xml>
-                       <ToUserName><![CDATA[gh_c2bb951675bb]]></ToUserName>
+                       <ToUserName><![CDATA[gh_b963016b584e]]></ToUserName>
                        <Content>news{ slug }</Content>
                        <FromUserName><![CDATA[oIySzjrizSaAyqnlB57ggb0j2WNc]]></FromUserName>
                        <MsgType><![CDATA[text]]></MsgType>
