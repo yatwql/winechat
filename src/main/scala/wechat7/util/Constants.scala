@@ -7,6 +7,7 @@ object Constants {
   val config = ConfigFactory.load(env)
   val appId = config.getString("wechat.appId")
   val appSecret =  config.getString("wechat.appSecret")
+  val appUserId = config.getString("wechat.app.userid")
   val TOKEN =  config.getString("wechat.TOKEN")
   val USE_ADVANCED_VERSION = config.getBoolean("wechat.USE_ADVANCED_VERSION")
 

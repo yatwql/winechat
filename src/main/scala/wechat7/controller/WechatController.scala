@@ -1,6 +1,7 @@
 package wechat7.controller
 
 import scala.xml.Elem
+import wechat7.util._
 import scala.xml.XML
 
 import wechat7.WechatAppStack
@@ -33,7 +34,7 @@ trait WechatController extends WechatAppStack with AgentProxy  {
     val slug = params("slug")
 
     val requestXml = <xml>
-                       <ToUserName><![CDATA[gh_c2bb951675bb]]></ToUserName>
+                       <ToUserName><![CDATA["+Constans.appUserId+"]]></ToUserName>
                        <Content>{ slug }</Content>
                        <FromUserName><![CDATA[oIySzjrizSaAyqnlB57ggb0j2WNc]]></FromUserName>
                        <MsgType><![CDATA[text]]></MsgType>
