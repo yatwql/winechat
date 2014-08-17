@@ -1,6 +1,7 @@
 package wechat7.logic
 
 import scala.xml.Node
+import wechat7.util._
 import akka.actor.ActorSystem
 import spray.caching.ValueMagnet.fromAny
 import spray.util.pimpFuture
@@ -55,27 +56,29 @@ trait Plugin extends ActionRepo with UserRepo {
   }
 
   def updateUserAction(openId: String, actionKey: String) = {
-    println(" prepare to update the next action of " + openId )
+    println(" prepare to update the next action of " + openId)
     CacheMgr.userActionCache(openId) {
       val action = getNextAction(actionKey)
       action match {
         case Some("ignore") => {
-          println(" Ignore the save action of " + openId )
-          None}
+          println(" Ignore the save action of " + openId)
+          None
+        }
         case Some("") => {
-           println(" Ignore the save action of " + openId )
-          None}
+          println(" Ignore the save action of " + openId)
+          None
+        }
         case Some(action1) => {
           println(" Update the next action of " + openId + " to " + action)
           action
         }
         case _ => {
-          println(" Ignore the save action of " + openId )
-          None}
+          println(" Ignore the save action of " + openId)
+          None
+        }
       }
 
     }
-    //println(" The user action of  " + openId +" is "+CacheMgr.userActionCache.get(openId).get.value )
   }
 
   def getNicknameFromDB(openId: String): Option[String] = {
@@ -86,13 +89,13 @@ trait Plugin extends ActionRepo with UserRepo {
       case None => {
         println(" Get user info from wechat site")
         WechatUtils.getUserInfo(openId) match {
-          case Some(json) =>addUser(json)
-          case _ => { 
+          case Some(json) => addUser(json)
+          case _ => {
             println("Not able to load user information from wechat site")
             ""
           }
         }
-        
+
       }
       case _ => {
         println("Not able to load user information")
@@ -103,10 +106,16 @@ trait Plugin extends ActionRepo with UserRepo {
   }
 
   override def getNickname(openId: String): Option[String] = {
-    println(" Get nickname for openid " + openId)
-    CacheMgr.nicknameCache(openId) {
-      getNicknameFromDB(openId)
-    }.await()
+    Constants.USE_ADVANCED_VERSION match {
+      case true => {
+        println(" Get nickname for openid " + openId)
+        CacheMgr.nicknameCache(openId) {
+          getNicknameFromDB(openId)
+        }.await()
+      }
+      case _ => None
+    }
+
   }
   def process(openId: String, nickname: String, appUserId: String, msgType: String, currentAction: Option[String], requestContent: String): Option[Node] = {
     None
@@ -117,10 +126,10 @@ trait Plugin extends ActionRepo with UserRepo {
     Some(WechatUtils.getTextMsg(appUserId, openId, responseContent))
   }
 
-  def splitListIntoDesc(list: List[(String, Int,String)]): Option[String] = {
+  def splitListIntoDesc(list: List[(String, Int, String)]): Option[String] = {
     list match {
       case data :: rest => {
-        val (name, id,remark) = data
+        val (name, id, remark) = data
         splitListIntoDesc(rest) match {
           case Some((restDesc)) => Some((name + "," + remark + "; " + restDesc))
           case _ => Some((name + " , " + remark))
